@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+        <div class="form-group">
+          <label for="nombreExperiencia">Nombre Experiencia</label>
+          <input type="text" class="form-control" id="nombreExperiencia" name="nombreExperiencia" [(ngModel)]="nombreExperiencia" required>
+        </div>
+        <div class="form-group">
+          <label for="modalidadExperiencia">Modalidad Experiencia</label>
+          <input type="text" class="form-control" id="modalidadExperiencia" name="modalidadExperiencia" [(ngModel)]="modalidadExperiencia" required>
+        </div>
+        <div class="form-group">
+          <label for="lugarExperiencia">Lugar Experiencia</label>
+          <input type="text" class="form-control" id="lugarExperiencia" name="lugarExperiencia" [(ngModel)]="lugarExperiencia" required>
+        </div>
+        <div class="form-group">
+          <label for="tiempoExperiencia">Tiempo Experiencia</label>
+          <input type="number" class="form-control" id="tiempoExperiencia" name="tiempoExperiencia" [(ngModel)]="tiempoExperiencia" required>
+        </div>
+        <div class="form-group">
+          <label for="contenidoExperiencia">Contenido Experiencia</label>
+          <input type="text" class="form-control" id="contenidoExperiencia" name="contenidoExperiencia" [(ngModel)]="contenidoExperiencia" required>
+        </div>
+        <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"> Crear Experiencia </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+

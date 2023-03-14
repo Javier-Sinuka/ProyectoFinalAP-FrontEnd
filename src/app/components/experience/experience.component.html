@@ -44,8 +44,27 @@
     </div>
   </div>
 
-  <div class="experience-info">
-    <app-lista-experiencias></app-lista-experiencias>
-  </div>
 
+  <br>
+  <br>
+  <br>
+  <div class="container mt-5" *ngIf="contactos">
+    <h3>Mis Contactos</h3>
+    <table class="mt-5 table table-hover" style="color: white">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contacto of contactos">
+          <td>{{ contacto.id }}</td>
+          <td>{{ contacto.nombre }}</td>
+          <td>{{ contacto.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

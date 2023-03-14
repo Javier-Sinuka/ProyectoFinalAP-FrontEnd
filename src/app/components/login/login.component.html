@@ -285,23 +285,47 @@
   <div class="signin">
     <div class="content">
       <h2><strong>Iniciar Sesion</strong></h2>
-      <div class="form">
-        <div class="inputBx">
-          <input type="text" required>
-          <i>Usuario</i>
+      <form #form="ngForm" (ngSubmit)="login(form)">
+        <div class="form"> <!-- AGREGUE EL #FORM  -->
+          <div class="inputBx">
+            <input type="text" [(ngModel)]="creds.email" required>
+            <i>Usuario</i>
+          </div>
+          <div class="inputBx">
+            <input type="password" [(ngModel)]="creds.password" required>
+            <i>Contraseña</i>
+          </div>
+          <div class="links">
+            <a href=""></a>
+            <a href="/create-account">Crear Cuenta</a>
+          </div>
+          <div class="inputBx">
+            <input type="submit" value="Ingresar" style="background-color: #7be4e5;color: #515a6c;text-transform: uppercase">
+          </div>
         </div>
-        <div class="inputBx">
-          <input type="password" required>
-          <i>Contraseña</i>
-        </div>
-        <div class="links">
-          <a href=""></a>
-          <a href="/create-account">Crear Cuenta</a>
-        </div>
-        <div class="inputBx">
-          <input type="submit" value="Ingresar" style="background-color: #7be4e5;color: #515a6c;text-transform: uppercase">
-        </div>
-      </div>
+      </form>
+
+
+<!--      <div class="form"> &lt;!&ndash; AGREGUE EL #FORM  &ndash;&gt;-->
+<!--            <form #form="ngForm" (ngSubmit)="login(form)">-->
+<!--                <div class="inputBx">-->
+<!--                  <input type="text" [(ngModel)]="creds.usuario" required>-->
+<!--                  <i>Usuario</i>-->
+<!--                </div>-->
+<!--                <div class="inputBx">-->
+<!--                  <input type="password" [(ngModel)]="creds.password" required>-->
+<!--                  <i>Contraseña</i>-->
+<!--                </div>-->
+<!--                <div class="links">-->
+<!--                  <a href=""></a>-->
+<!--                  <a href="/create-account">Crear Cuenta</a>-->
+<!--                </div>-->
+<!--                <div class="inputBx">-->
+<!--                  <input type="submit" value="Ingresar" style="background-color: #7be4e5;color: #515a6c;text-transform: uppercase">-->
+<!--                </div>-->
+<!--            </form>-->
+<!--      </div>-->
+
     </div>
   </div>
 </section>

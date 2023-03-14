@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoguinComponent } from './components/loguin/loguin.component';
+import { LoginComponent } from './components/login/login.component';
 import { Pagina404Component } from './components/pagina404/pagina404.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
@@ -15,20 +15,17 @@ import { ContactMeComponent } from './components/contact-me/contact-me.component
 import { ExperienceComponent } from './components/experience/experience.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ListaExperienciasComponent } from './components/experience-components/lista-experiencias/lista-experiencias.component';
-import { DetalleExperienciaComponent } from './components/experience-components/detalle-experiencia/detalle-experiencia.component';
-import { NuevaExperienciaComponent } from './components/experience-components/nueva-experiencia/nueva-experiencia.component';
-import { EditarExperienciaComponent } from './components/experience-components/editar-experiencia/editar-experiencia.component';
-
-import { HttpClientModule } from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {FormsModule} from "@angular/forms";
+import {AuthInterceptor} from "./helpers/auth.interceptor";
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoguinComponent,
+    LoginComponent,
     Pagina404Component,
     HomeComponent,
     AboutMeComponent,
@@ -36,11 +33,7 @@ import {FormsModule} from "@angular/forms";
     FooterComponent,
     HeaderComponent,
     ContactMeComponent,
-    ExperienceComponent,
-    ListaExperienciasComponent,
-    DetalleExperienciaComponent,
-    NuevaExperienciaComponent,
-    EditarExperienciaComponent,
+    ExperienceComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +44,9 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

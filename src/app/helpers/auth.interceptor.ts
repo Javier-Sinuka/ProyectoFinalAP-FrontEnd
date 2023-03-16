@@ -3,9 +3,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import {ApiService} from "../api.service";
 
 @Injectable()
@@ -24,7 +24,6 @@ export class AuthInterceptor implements HttpInterceptor {
       })
       return  next.handle(cloned);
     }
-
-    return next.handle(request);
+    return next.handle(request);//seguir con el pipe
   }
 }

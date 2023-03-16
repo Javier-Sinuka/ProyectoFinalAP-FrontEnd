@@ -26,7 +26,8 @@
           <li class="nav-item">
             <a class="nav-link" href="/about-me">About Me</a>
           </li>
-          <li class="nav-item dropdown">
+
+          <li *ngIf="!verifyLoggedInHeader()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account
             </a>
@@ -35,6 +36,11 @@
               <li><a class="dropdown-item" href="/create-account">Create Account</a></li>
             </ul>
           </li>
+
+          <li *ngIf="verifyLoggedInHeader()" style="cursor: pointer; text-transform: uppercase; " class="nav-item">
+            <strong><a class="nav-link" (click)="onLogout()">logout</a></strong>
+          </li>
+
         </ul>
       </div>
     </div>

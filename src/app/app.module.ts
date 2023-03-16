@@ -16,8 +16,9 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
+import { RolesDirective } from './directives/roles.directive';
 
 
 
@@ -33,7 +34,8 @@ import {AuthInterceptor} from "./helpers/auth.interceptor";
     FooterComponent,
     HeaderComponent,
     ContactMeComponent,
-    ExperienceComponent
+    ExperienceComponent,
+    RolesDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import {AuthInterceptor} from "./helpers/auth.interceptor";
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}

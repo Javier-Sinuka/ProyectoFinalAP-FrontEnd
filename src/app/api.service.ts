@@ -1,20 +1,19 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {Contacto, Credentials} from "./model";
+import {Contacto, Credentials, Laboral} from "./model";
 import {Router} from "@angular/router";
+import {Experiencia} from "./models/Experiencia";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ApiService {
+  private URL_EXPERIENCIA:string = 'http://localhost:8080/api/contenido_experiencia'
+
   constructor(private http: HttpClient,
               private router: Router) {
-  }
-
-  getContactos(): Observable<Contacto[]> {
-    return this.http.get<Contacto[]>('http://localhost:8080/api/usuario/listaUsuarios');
   }
 
   login(creds: Credentials){
@@ -49,5 +48,16 @@ export class ApiService {
     return localStorage.getItem('token');
   }
 
+  getExperienciaAll(){
+    return this.http.get<Experiencia[]>(this.URL_EXPERIENCIA + '/lista');
+  }
+
+  getContactos(){
+    return this.http.get<Contacto[]>('http://localhost:8080/api/usuario/listaUsuarios');
+  }
+
+  getLaboral(){
+    return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral')
+  }
 
 }

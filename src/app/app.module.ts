@@ -16,12 +16,10 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AuthInterceptor} from "./helpers/auth.interceptor";
+import {  FormsModule, ReactiveFormsModule  } from "@angular/forms";
+import  {AuthInterceptor} from "./helpers/auth.interceptor";
 import { RolesDirective } from './directives/roles.directive';
-
-
-
+import {  ApiService} from "./api.service";
 
 @NgModule({
   declarations: [
@@ -48,7 +46,8 @@ import { RolesDirective } from './directives/roles.directive';
     ReactiveFormsModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true},
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

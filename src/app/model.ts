@@ -8,3 +8,15 @@ export interface Credentials{
   email: string;
   password: string;
 }
+
+
+export interface Laboral{
+  id: number;
+  lugarExperiencia: string;
+  modalidadExperiencia: string;
+  nombreExperiencia: string;
+  tiempoExperiencia: string;
+  contenidoExperiencia: string;
+}
+
+

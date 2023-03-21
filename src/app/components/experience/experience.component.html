@@ -65,6 +65,32 @@
           <td>{{ contacto.email }}</td>
         </tr>
       </tbody>
+      <br>
+      <br>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre Exp</th>
+        <th>Lugar Exp</th>
+        <th>Contenido Exp</th>
+        <th>Modalidad Exp</th>
+        <th>Tiempo Exp</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let laboral of laborales">
+          <td>{{ laboral.id}}</td>
+          <td>{{ laboral.lugarExperiencia}}</td>
+          <td>{{ laboral.lugarExperiencia }}</td>
+          <td>{{ laboral.contenidoExperiencia}}</td>
+          <td>{{ laboral.tiempoExperiencia}}</td>
+          <td>{{ laboral.nombreExperiencia}}</td>
+        </tr>
+      </tbody>
+      <br>
+      <br>
+
     </table>
+
   </div>
 </section>

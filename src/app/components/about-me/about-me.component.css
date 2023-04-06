@@ -223,3 +223,30 @@ span{
     padding-top: 15px;
   }
 }
+
+/*********************** HABILIDADES ********************/
+.backgronund-col{
+  padding: 1rem;
+}
+.experience-info{
+  padding-top: 0rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: white;
+}
+.experience-info .content-expose h3{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.experience-info .content-expose .back-cute p{
+  padding-top: 0.4rem;
+  font-size: 18px;
+}
+.back-cute{
+  background: #535b6e;
+  padding: 7px;
+  border-radius: 10px;
+  width: 550px;
+}
+
+

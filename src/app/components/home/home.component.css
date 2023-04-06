@@ -170,7 +170,6 @@ main{
 }
 /******************************************************************************/
 
-
 .texto-ppl-home{
   padding: 7rem;
   color: white;
@@ -219,6 +218,36 @@ main{
     padding-bottom: 3rem;
   }
 }
+@media (max-width: 480px) {
+  .texto-inicial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding-top: 0;
+  }
+  .texto-inicial .pad-p{
+    padding-left: 0;
+  }
+  .texto-inicial-two{
+    margin: 0;
+  }
+  .autor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 29rem;
+  }
+  .text-center{
+    padding-bottom: 1rem;
+  }
+  .texto-inicial .moving span::before{
+    content: '\A';
+  }
+}
+
 .texto-inicial-two{
   font-family: 'Permanent Marker', cursive;
 }
@@ -369,6 +398,25 @@ div .welcome-text-ppl .row .inter{
     padding-left: 4rem;
     padding-bottom: 3rem;
     font-size: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .welcome-text-ppl{
+    width: 100%;
+    padding-right: 0;
+  }
+  .welcome-text{
+    font-size: 1rem;
+    padding-left: 3rem;
+  }
+  .welcome-text-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 17rem;
+    padding-left: 4rem;
+    padding-bottom: 3rem;
+    font-size: 1rem;
   }
 }
 /********************************************************/

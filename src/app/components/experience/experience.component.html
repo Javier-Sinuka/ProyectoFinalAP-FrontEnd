@@ -44,53 +44,61 @@
     </div>
   </div>
 
-
   <br>
   <br>
-  <br>
-  <div class="container mt-5" *ngIf="contactos">
-    <h3>Mis Contactos</h3>
-    <table class="mt-5 table table-hover" style="color: white">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let contacto of contactos">
-          <td>{{ contacto.id }}</td>
-          <td>{{ contacto.nombre }}</td>
-          <td>{{ contacto.email }}</td>
-        </tr>
-      </tbody>
-      <br>
-      <br>
-      <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nombre Exp</th>
-        <th>Lugar Exp</th>
-        <th>Contenido Exp</th>
-        <th>Modalidad Exp</th>
-        <th>Tiempo Exp</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let laboral of laborales">
-          <td>{{ laboral.id}}</td>
-          <td>{{ laboral.lugarExperiencia}}</td>
-          <td>{{ laboral.lugarExperiencia }}</td>
-          <td>{{ laboral.contenidoExperiencia}}</td>
-          <td>{{ laboral.tiempoExperiencia}}</td>
-          <td>{{ laboral.nombreExperiencia}}</td>
-        </tr>
-      </tbody>
-      <br>
-      <br>
 
-    </table>
+  <div *ngFor="let laboral of laborales" class="container-fluid experience-info">
+    <div class="content-expose">
+      <h3><strong>- {{laboral.nombreExperiencia}}</strong></h3>
+      <h5>Modalidad: {{laboral.modalidadExperiencia}}  ({{laboral.lugarExperiencia}})</h5>
+      <h5>Periodo: {{laboral.periodoExperiencia}} meses</h5>
+      <div class="back-cute">
+        <p>
+          {{laboral.contenidoExperiencia}}
+        </p>
+      </div>
+      <div *ngIf="verifyLogged()" class="modificadores">
+<!--        <button type="button" class="btn btn-success editar-boton" (click)="editarExperienciaLaboral(laboral)">Editar</button>-->
+        <button type="button" class="btn btn-danger eliminar-boton" (click)="eliminarExperienciaLaboral(laboral.id)">Eliminar</button>
+<!--        <div *ngIf="editOn()">-->
+<!--          <form class="form" [formGroup]="formulario" (ngSubmit)="registrarExperiencia()">-->
+<!--            <label>Nombre Experiencia: {{laboral.nombreExperiencia}}</label>-->
+<!--            <input type="text" placeholder="Nuevo Nombre Experiencia" formControlName="nombreExperiencia" required>-->
+<!--            <label>Modalidad de Trabajo: {{laboral.modalidadExperiencia}}</label>-->
+<!--            <input type="text" placeholder="Nueva Modalidad Experiencia" formControlName="modalidadExperiencia" required>-->
+<!--            <label>Lugar de Trabajo: {{laboral.lugarExperiencia}}</label>-->
+<!--            <input type="text" placeholder="Nuevo Lugar" formControlName="lugarExperiencia" required>-->
+<!--            <label>Periodo de Trabajo: {{laboral.periodoExperiencia}}</label>-->
+<!--            <input type="text" placeholder="Nuevo Periodo" formControlName="periodoExperiencia" required>-->
+<!--            <label>Contenido de la Experiencia Laboral: {{laboral.contenidoExperiencia}}</label>-->
+<!--            <input type="text" placeholder="Nuevo Contenido" formControlName="contenidoExperiencia" required>-->
+<!--            <button>Guardar</button>-->
+<!--          </form>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+<!--  <div *ngIf="verifyLogged() && !editOn()">-->
+  <div *ngIf="verifyLogged()">
+    <button type="button" class="btn btn-info agregar-boton" (click)="crearExperiencia()">Agregar nueva Experiencia Laboral</button>
+  </div>
 
+  <div *ngIf="getFlag() && verifyLogged()">
+    <br>
+    <br>
+    <h4>AGREGAR NUEVA EXPERIENCIA LABORAL</h4>
+    <form class="form" [formGroup]="formulario" (ngSubmit)="registrarExperiencia()">
+      <label>Nombre de la Experiencia Laboral</label>
+      <input type="text" placeholder="Nombre Experiencia" formControlName="nombreExperiencia" required>
+      <label>Modalidad de la Experiencia Laboral</label>
+      <input type="text" placeholder="Modalidad Experiencia" formControlName="modalidadExperiencia" required>
+      <label>Lugar de Trabajo</label>
+      <input type="text" placeholder="Lugar" formControlName="lugarExperiencia" required>
+      <label>Periodo de Trabajo</label>
+      <input type="text" placeholder="Periodo" formControlName="periodoExperiencia" required>
+      <label>Contenido de la Experiencia Laboral</label>
+      <input type="text" placeholder="Contenido" formControlName="contenidoExperiencia" required>
+      <button>Guardar</button>
+    </form>
   </div>
 </section>

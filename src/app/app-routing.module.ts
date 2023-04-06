@@ -9,6 +9,8 @@ import {FooterComponent} from "./components/footer/footer.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {ContactMeComponent} from "./components/contact-me/contact-me.component";
 import {ExperienceComponent} from "./components/experience/experience.component";
+import {AcademicTrainingComponent} from "./components/academic-training/academic-training.component";
+import {ProjectsComponent} from "./components/projects/projects.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: "full"},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'header', component:HeaderComponent},
   {path: 'contact-me', component:ContactMeComponent},
   {path: 'experience', component:ExperienceComponent},
+  {path: 'academic-training', component:AcademicTrainingComponent},
+  {path: 'pojects', component: ProjectsComponent},
   {path: '**', redirectTo: '', pathMatch: "full"}
 ];
 

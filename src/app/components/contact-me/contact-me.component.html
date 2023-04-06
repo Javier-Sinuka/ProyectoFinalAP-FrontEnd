@@ -37,26 +37,26 @@
       </div>
     </div>
     <div class="contactForm">
-      <form>
+      <form [formGroup]="formularioCorreo">
         <h2>Enviar Mensaje</h2>
 
         <div class="inputBox">
-          <input type="text" name="" required="required">
-          <span>Full Name</span>
+          <input type="text" name="" required="required" formControlName="nombre">
+          <span>Nombre completo</span>
         </div>
 
         <div class="inputBox">
-          <input type="email" name="" required="required">
+          <input type="email" name="" required="required" formControlName="correo">
           <span>Email</span>
         </div>
 
         <div class="inputBox">
-          <textarea required="required"></textarea>
+          <textarea type="text" required="required" formControlName="contenido"></textarea>
           <span>Escribe tu mensaje...</span>
         </div>
 
         <div class="inputBox">
-          <input type="submit" name="" value="Enviar">
+          <input type="submit" name="" value="Enviar" (click)="envioCorreo()">
         </div>
       </form>
     </div>

@@ -10,7 +10,7 @@ section{
   min-height: 100vh;
   height: 100%;
   color: white;
-  padding-top: 5rem;
+  padding-top: 10rem;
 }
 @media (min-width: 960px) { /*Tengo que continuar*/
   section{
@@ -29,7 +29,7 @@ section{
 }
 .main-controller h2 strong{
   font-size: 3rem;
-  text-shadow: 0px 9px 7px #515a6c;
+  text-shadow: 0px 9px 7px #276364;
 }
 .main-controller h3 strong{
   font-size: 2rem;
@@ -48,7 +48,7 @@ section{
   font-size: 18px;
 }
 .back-cute{
-  background: #5c657a;
+  background: #2b5e6b;
   padding: 7px;
   border-radius: 10px;
   -webkit-box-shadow: 0px 6px 35px -8px rgba(0,0,0,0.75);

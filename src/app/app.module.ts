@@ -20,6 +20,8 @@ import {  FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import  {AuthInterceptor} from "./helpers/auth.interceptor";
 import { RolesDirective } from './directives/roles.directive';
 import {  ApiService} from "./api.service";
+import { AcademicTrainingComponent } from './components/academic-training/academic-training.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {  ApiService} from "./api.service";
     HeaderComponent,
     ContactMeComponent,
     ExperienceComponent,
-    RolesDirective
+    RolesDirective,
+    AcademicTrainingComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

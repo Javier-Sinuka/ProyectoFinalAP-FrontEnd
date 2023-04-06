@@ -30,58 +30,8 @@ h4{
   margin-left: 20px;
   display: grid;
   grid-template-columns:  repeat( auto-fill, minmax(380px, 1fr) );
- /*Puse yo esto, rompe todo, pero es para testear*/
- /* position: relative;*/
- /* overflow: hidden;*/
 }
-/*Puse yo para testear*/
-/*.form input{*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*  background: none;*/
-/*  color: #fff;*/
-/*  padding-top: 20px;*/
-/*  border: none;*/
-/*  outline: 0px;*/
-/*}*/
-/*.form .lbl-nombnre{*/
-/*  position: absolute;*/
-/*  bottom: 0;*/
-/*  left: 0;*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*  pointer-events: none;*/
-/*  border-bottom: 1px solid #c7c7c7;*/
-/*}*/
-/*.form .lbl-nombnre:after{*/
-/*  content: '';*/
-/*  position: absolute;*/
-/*  left: 0;*/
-/*  bottom: -1px;*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*  border-bottom: 1px solid #2ecece;*/
-/*  transform: translateY(-100%);*/
-/*  transition: all 0.3s ease;*/
-/*}*/
-/*.text-nombre{*/
-/*  position: absolute;*/
-/*  bottom: 5px;*/
-/*  left: 0;*/
-/*  transition: all 0.3s ease;*/
-/*  color: #ffffff;*/
-/*}*/
-/*.form input:focus + .lbl-nombnre .text-nombre,*/
-/*.form input:valid + .lbl-nombnre .text-nombre{*/
-/*  transform: translateY(-150%);*/
-/*  font-size: 14px;*/
-/*  color: #2ecece;*/
-/*}*/
-/*.form input:focus + .lbl-nombnre:after,*/
-/*.form input:valid + .lbl-nombnre:after{*/
-/*  transform: translateX(0%);*/
-/*}*/
-/*Hasta aca*/
+
 form label{
   display: flex;
   margin-top: 20px;

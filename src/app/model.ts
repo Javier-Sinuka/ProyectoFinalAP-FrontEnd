@@ -15,8 +15,9 @@ export interface Laboral{
   lugarExperiencia: string;
   modalidadExperiencia: string;
   nombreExperiencia: string;
-  tiempoExperiencia: string;
+  periodoExperiencia: string;
   contenidoExperiencia: string;
+
 }
 
 

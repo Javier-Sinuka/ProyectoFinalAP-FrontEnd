@@ -1,0 +1,113 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+  color: white;
+}
+section{
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+section .heading{
+  display: inline-block;
+  position: relative;
+  padding: 100px 60px 40px 60px;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  text-shadow: 0px 9px 7px #515a6c;
+}
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.wrapper .container{
+  position: relative;
+  width: 350px;
+  background: #318486;
+  margin: 40px 10px;
+  padding: 30px 20px;
+  border-radius: 7px;
+  transition: 0.3s ease;
+  box-shadow: 0px 6px 35px -8px rgba(0,0,0,0.75);
+}
+.wrapper .container .project{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10%;
+  width: 100%;
+  display: block;
+}
+.wrapper .container .project .imgBox{
+  position: relative;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  border: 8px solid #2a3a56;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.wrapper .container .project .imgBox img{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+.wrapper .container .project .imgBox:hover img{
+  filter: saturate(140%);
+  transform: scale(0.99);
+}
+.wrapper .container .project .imgBox:hover{
+  filter: saturate(140%);
+  transform: scale(0.94);
+}
+.wrapper .container .project h2{
+  padding: 5px 0;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.wrapper .container p{
+  margin-top: 130px;
+  padding: 0 8px;
+  font-size: 15px;
+  opacity: 0.8;
+}
+.wrapper .container .left{
+  font-size: 30px;
+  display: block;
+  text-align: left;
+  color: #143c59;
+}
+.wrapper .container .right{
+   font-size: 30px;
+   display: block;
+   text-align: right;
+   color: #143c59;
+ }
+.wrapper .container .link-projects{
+  width: 100%;
+}
+
+.wrapper .container .link-projects i{
+  font-size: 1.2em;
+  padding: 8px;
+  background: rgba(225,225,225,0.08);
+  border-radius: 4px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.5);
+}
+.wrapper .container .link-projects i:hover{
+  background: #143c59;
+}

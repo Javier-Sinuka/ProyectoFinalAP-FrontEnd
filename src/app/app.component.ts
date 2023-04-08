@@ -7,7 +7,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{ //Eliminar constructor si no soluciono pantalla blanca
-  title = 'Portafolio';
+  title = 'Portafolio - Javier Siñuka';
   isCollapsed = false;
 
   navbarfixed:boolean = false;

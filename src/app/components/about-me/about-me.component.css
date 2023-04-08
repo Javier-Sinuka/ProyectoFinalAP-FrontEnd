@@ -234,6 +234,12 @@ span{
   padding-right: 2rem;
   color: white;
 }
+h3 strong{
+  text-shadow: 0px 7px 5px #515a6c;
+}
+.pad{
+  padding-bottom: 0.5rem ;
+}
 .experience-info .content-expose h3{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -247,6 +253,7 @@ span{
   padding: 7px;
   border-radius: 10px;
   width: 550px;
+  box-shadow: 0px 6px 35px -8px rgba(0,0,0,0.75);
 }
 
 

@@ -16,7 +16,9 @@ import {LaboralClass} from "../../models/LaboralClass";
 export class ExperienceComponent implements OnInit{
   contactos?: Contacto[];
   laborales?: Laboral[];
+  laboral?: Laboral;
   formulario: FormGroup = this.fb.group({
+    id:[],
     nombreExperiencia: [],
     modalidadExperiencia: [],
     lugarExperiencia: [],
@@ -24,6 +26,8 @@ export class ExperienceComponent implements OnInit{
     contenidoExperiencia: [],
   })
   laboralEnEdicion?: Laboral;
+  idLaboral?:number;
+  idParaPrueba?:number;
 
 
   constructor( private apiService: ApiService,
@@ -60,17 +64,41 @@ export class ExperienceComponent implements OnInit{
       return false;
     }
   }
+
+  setId(id: number){
+    this.idLaboral = id;
+  }
+
+  getIdSeteado(){
+    return this.idLaboral;
+  }
+
   registrarExperiencia(){
     const value = this.formulario.value;
-
-      this.apiService.setLaboral(value).subscribe(data =>{
-        this.getLaboral();
-        alert("Se agrego con exito la Nueva Experiencia Laboral!");
-        localStorage.removeItem('flag');
-        this.router.navigate(['/home']);
-      })
+    this.apiService.setLaboral(value).subscribe(data =>{
+      this.getLaboral();
+      alert("Se agrego con exito la Nueva Experiencia Laboral!");
       localStorage.removeItem('flag');
+      this.router.navigate(['/home']);
+    });
+    localStorage.removeItem('flag');
+    this.formulario.reset();
   }
+
+  modificarExperiencia(){
+    this.formulario.get('id')?.setValue(this.idLaboral);
+    const value = this.formulario.value;
+    this.apiService.updateLaboral(value).subscribe(data =>{
+      this.getLaboral();
+      alert("Se edito experiencia laboral con Exito!");
+      localStorage.removeItem('edit');
+      this.router.navigate(['/home']);
+      console.log(value);
+    })
+    localStorage.removeItem('flag');
+    this.formulario.reset();
+  }
+
 
   eliminarExperienciaLaboral(id: number){
     if(confirm("¿Realmente quiere elminar la Experiencia Laboral?")){
@@ -83,16 +111,17 @@ export class ExperienceComponent implements OnInit{
     window.location.reload();
   }
 
-  editarExperienciaLaboral(laboral: Laboral){
+  editarExperienciaLaboral(id: number){
     localStorage.setItem('edit', 'true');
-    this.laboralEnEdicion = laboral;
-    this.formulario.setValue({
-      nombreExperiencia: laboral.nombreExperiencia,
-      modalidadExperiencia: laboral.modalidadExperiencia,
-      lugarExperiencia: laboral.lugarExperiencia,
-      periodoExperiencia: laboral.periodoExperiencia,
-      contenidoExperiencia: laboral.contenidoExperiencia,
-    })
+    this.setId(id);
+  }
+
+  laboralID(id?: number){
+    if (id = this.idParaPrueba){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   editOn(){
@@ -101,11 +130,6 @@ export class ExperienceComponent implements OnInit{
     } else{
       return false;
     }
-  }
-
-  getLlamadoTest(){
-    this.laborales?.forEach(function (value){
-    })
   }
 
 }

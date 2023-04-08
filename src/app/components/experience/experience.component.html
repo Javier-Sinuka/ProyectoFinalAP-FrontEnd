@@ -58,29 +58,35 @@
         </p>
       </div>
       <div *ngIf="verifyLogged()" class="modificadores">
-<!--        <button type="button" class="btn btn-success editar-boton" (click)="editarExperienciaLaboral(laboral)">Editar</button>-->
+        <button type="button" class="btn btn-success editar-boton" (click)="editarExperienciaLaboral(laboral.id)">Editar</button>
         <button type="button" class="btn btn-danger eliminar-boton" (click)="eliminarExperienciaLaboral(laboral.id)">Eliminar</button>
-<!--        <div *ngIf="editOn()">-->
-<!--          <form class="form" [formGroup]="formulario" (ngSubmit)="registrarExperiencia()">-->
-<!--            <label>Nombre Experiencia: {{laboral.nombreExperiencia}}</label>-->
-<!--            <input type="text" placeholder="Nuevo Nombre Experiencia" formControlName="nombreExperiencia" required>-->
-<!--            <label>Modalidad de Trabajo: {{laboral.modalidadExperiencia}}</label>-->
-<!--            <input type="text" placeholder="Nueva Modalidad Experiencia" formControlName="modalidadExperiencia" required>-->
-<!--            <label>Lugar de Trabajo: {{laboral.lugarExperiencia}}</label>-->
-<!--            <input type="text" placeholder="Nuevo Lugar" formControlName="lugarExperiencia" required>-->
-<!--            <label>Periodo de Trabajo: {{laboral.periodoExperiencia}}</label>-->
-<!--            <input type="text" placeholder="Nuevo Periodo" formControlName="periodoExperiencia" required>-->
-<!--            <label>Contenido de la Experiencia Laboral: {{laboral.contenidoExperiencia}}</label>-->
-<!--            <input type="text" placeholder="Nuevo Contenido" formControlName="contenidoExperiencia" required>-->
-<!--            <button>Guardar</button>-->
-<!--          </form>-->
-<!--        </div>-->
       </div>
     </div>
   </div>
-<!--  <div *ngIf="verifyLogged() && !editOn()">-->
+
   <div *ngIf="verifyLogged()">
     <button type="button" class="btn btn-info agregar-boton" (click)="crearExperiencia()">Agregar nueva Experiencia Laboral</button>
+  </div>
+
+  <div *ngIf="editOn()">
+    <div *ngFor="let laboral of laborales">
+      <div *ngIf="laboral.id == getIdSeteado()">
+        <form class="form" [formGroup]="formulario" (ngSubmit)="modificarExperiencia()">
+          {{setId(laboral.id)}}
+          <label>Nombre Experiencia: <strong>{{laboral.nombreExperiencia}}</strong></label>
+          <input type="text" placeholder="Nuevo Nombre Experiencia" formControlName="nombreExperiencia" required>
+          <label>Modalidad de Trabajo: <strong>{{laboral.modalidadExperiencia}}</strong></label>
+          <input type="text" placeholder="Nueva Modalidad Experiencia" formControlName="modalidadExperiencia" required>
+          <label>Lugar de Trabajo: <strong>{{laboral.lugarExperiencia}}</strong></label>
+          <input type="text" placeholder="Nuevo Lugar" formControlName="lugarExperiencia" required>
+          <label>Periodo de Trabajo: <strong>{{laboral.periodoExperiencia}}</strong></label>
+          <input type="text" placeholder="Nuevo Periodo" formControlName="periodoExperiencia" required>
+          <label>Contenido de la Experiencia Laboral: <strong>{{laboral.contenidoExperiencia}}</strong></label>
+          <input type="text" placeholder="Nuevo Contenido" formControlName="contenidoExperiencia" required>
+          <button>Guardar</button>
+        </form>
+      </div>
+    </div>
   </div>
 
   <div *ngIf="getFlag() && verifyLogged()">

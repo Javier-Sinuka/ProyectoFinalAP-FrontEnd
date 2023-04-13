@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../api.service'
-import {Contacto, Credentials, Laboral} from '../../model'
+import {Contacto, Credentials, Laboral, Value} from '../../model'
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {LaboralClass} from "../../models/LaboralClass";
+import {Experiencia} from '../../models/experiencia'
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -15,8 +16,7 @@ import {LaboralClass} from "../../models/LaboralClass";
 
 export class ExperienceComponent implements OnInit{
   contactos?: Contacto[];
-  laborales?: Laboral[];
-  laboral?: Laboral;
+  laborales: Laboral[] = [];
   formulario: FormGroup = this.fb.group({
     id:[],
     nombreExperiencia: [],
@@ -25,7 +25,6 @@ export class ExperienceComponent implements OnInit{
     periodoExperiencia: [],
     contenidoExperiencia: [],
   })
-  laboralEnEdicion?: Laboral;
   idLaboral?:number;
   idParaPrueba?:number;
 
@@ -38,25 +37,34 @@ export class ExperienceComponent implements OnInit{
   ngOnInit(): void {
     this.apiService.getContactos().subscribe(contactos =>{
       this.contactos = contactos;
-      console.log(contactos);
     });
     this.getLaboral();
-
   }
+
   verifyLogged():boolean{
     return this.apiService.verifyLogged();
   }
 
+  verifyLoggedAFK():boolean{
+    return this.apiService.verifyLoggedAFK();
+  }
+
   getLaboral(){
     this.apiService.getLaboral().subscribe( laboral =>{
-      this.laborales = laboral;
+      this.laborales.push(...laboral);
     });
   }
+
+  test(){
+    console.log('Test')
+  }
+
 
   // CREACION DE EXPERIENCIA
   crearExperiencia(){
     localStorage.setItem('flag', 'true');
   }
+
   getFlag(){
     if(localStorage.getItem('flag') == 'true'){
       return true;

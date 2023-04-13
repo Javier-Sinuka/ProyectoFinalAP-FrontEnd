@@ -4,6 +4,7 @@ import {map, Observable} from "rxjs";
 import {Contacto, Credentials, Laboral} from "./model";
 import {Router} from "@angular/router";
 import {LaboralClass} from "./models/LaboralClass";
+import {Experiencia} from "./models/experiencia";
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,11 @@ export class ApiService {
 
       const bearerToken = headers.get('Authorization')!;
       const token = bearerToken.replace('Bearer', '');
+      const token_AFK = bearerToken.replace('Bearer','');
 
       localStorage.setItem('token', token);
+
+      localStorage.setItem('token_afk', token_AFK);
 
       return body;
     }))
@@ -48,8 +52,17 @@ export class ApiService {
     return !!token; //Lo mismo que arriba, pero simplificado je
   }
 
+  verifyLoggedAFK():boolean{
+    const token = localStorage.getItem('token_afk');
+    // return token ? true : false;
+    return !!token; //Lo mismo que arriba, pero simplificado je
+  }
+
   getToken(){
     return localStorage.getItem('token');
+  }
+  getTokenAFK(){
+    return localStorage.getItem('token_afk');
   }
 
   getContactos(){
@@ -57,10 +70,10 @@ export class ApiService {
     return this.http.get<Contacto[]>('http://localhost:8080/api/usuario/listaUsuarios');
   }
 
+
   getLaboral(){
     // return this.http.get<Laboral[]>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/listaLaboral')
-    return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral')
-
+    return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral');
   }
 
   setLaboral(laboral: Laboral){

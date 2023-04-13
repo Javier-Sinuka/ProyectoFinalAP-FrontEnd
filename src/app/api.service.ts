@@ -11,8 +11,8 @@ import {Experiencia} from "./models/experiencia";
 })
 
 export class ApiService {
-  // private URL_EXPERIENCIA:string = 'https://proyectofinalap-backend-production.up.railway.app/api/contenido_experiencia'
-  private URL_EXPERIENCIA:string = 'http://localhost:8080/api/contenido_experiencia'
+  private URL_EXPERIENCIA:string = 'https://proyectofinalap-backend-production.up.railway.app/api/contenido_experiencia'
+  // private URL_EXPERIENCIA:string = 'http://localhost:8080/api/contenido_experiencia'
 
   laboral?:Laboral;
 
@@ -21,8 +21,8 @@ export class ApiService {
   }
 
   login(creds: Credentials){
-    // return this.http.post('https://proyectofinalap-backend-production.up.railway.app/login', creds, {
-    return this.http.post('http://localhost:8080/login', creds, {
+    return this.http.post('https://proyectofinalap-backend-production.up.railway.app/login', creds, {
+    // return this.http.post('http://localhost:8080/login', creds, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) =>{
       const body = response.body;
@@ -66,25 +66,25 @@ export class ApiService {
   }
 
   getContactos(){
-    // return this.http.get<Contacto[]>('https://proyectofinalap-backend-production.up.railway.app/api/usuario/listaUsuarios');
-    return this.http.get<Contacto[]>('http://localhost:8080/api/usuario/listaUsuarios');
+    return this.http.get<Contacto[]>('https://proyectofinalap-backend-production.up.railway.app/api/usuario/listaUsuarios');
+    // return this.http.get<Contacto[]>('http://localhost:8080/api/usuario/listaUsuarios');
   }
 
 
   getLaboral(){
-    // return this.http.get<Laboral[]>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/listaLaboral')
-    return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral');
+    return this.http.get<Laboral[]>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/listaLaboral')
+    // return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral');
   }
 
   setLaboral(laboral: Laboral){
-    // return this.http.post<Laboral>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/crearLaboral', laboral);
-    return this.http.post<Laboral>('http://localhost:8080/api/laboral/crearLaboral', laboral);
+    return this.http.post<Laboral>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/crearLaboral', laboral);
+    // return this.http.post<Laboral>('http://localhost:8080/api/laboral/crearLaboral', laboral);
 
   }
 
   deleteLaboral(id: number){
-    // return this.http.delete('https://proyectofinalap-backend-production.up.railway.app/api/laboral/eliminarLaboral/' + id);
-    return this.http.delete('http://localhost:8080/api/laboral/eliminarLaboral/' + id);
+    return this.http.delete('https://proyectofinalap-backend-production.up.railway.app/api/laboral/eliminarLaboral/' + id);
+    // return this.http.delete('http://localhost:8080/api/laboral/eliminarLaboral/' + id);
   }
 
   getLaboralPorId(id: number){
@@ -92,12 +92,12 @@ export class ApiService {
   }
 
   updateLaboral(laboral: Laboral){
-    // return this.http.put('https://proyectofinalap-backend-production.up.railway.app/api/laboral/editarLaboral/' + id, laboral);
-    return this.http.put('http://localhost:8080/api/laboral/actualizarLaboral/', laboral);
+    return this.http.put('https://proyectofinalap-backend-production.up.railway.app/api/laboral/actualizarLaboral/', laboral);
+    // return this.http.put('http://localhost:8080/api/laboral/actualizarLaboral/', laboral);
   }
 
   envioCorreo(parametros: any){
-    // return this.http.post('https://proyectofinalap-backend-production.up.railway.app/api/contacto/enviarCorreo', parametros);
-    return this.http.post('http://localhost:8080/api/contacto/enviarCorreo', parametros);
+    return this.http.post('https://proyectofinalap-backend-production.up.railway.app/api/contacto/enviarCorreo', parametros);
+    // return this.http.post('http://localhost:8080/api/contacto/enviarCorreo', parametros);
   }
 }

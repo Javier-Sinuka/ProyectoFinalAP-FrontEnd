@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../api.service'
-import {Contacto, Credentials, Laboral, Value} from '../../model'
+import {Contacto, Credentials, Laboral} from '../../model'
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -32,6 +32,7 @@ export class ExperienceComponent implements OnInit{
   constructor( private apiService: ApiService,
                private router: Router,
                private fb: FormBuilder){
+    localStorage.setItem('token_afk', ' eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkB1c2VyIiwiZXhwIjoxNjg0MDEwNjEzLCJub21icmUiOiJhZG1pbiJ9.CzQmS27yijPU-MU6EnIEkLjBys2vIi2KFErIWkMKRtA');
   }
 
   ngOnInit(): void {
@@ -56,7 +57,7 @@ export class ExperienceComponent implements OnInit{
   }
 
   test(){
-    console.log('Test')
+    window.location.reload();
   }
 
 
@@ -88,6 +89,7 @@ export class ExperienceComponent implements OnInit{
       alert("Se agrego con exito la Nueva Experiencia Laboral!");
       localStorage.removeItem('flag');
       this.router.navigate(['/home']);
+      this.test();
     });
     localStorage.removeItem('flag');
     this.formulario.reset();
@@ -102,9 +104,11 @@ export class ExperienceComponent implements OnInit{
       localStorage.removeItem('edit');
       this.router.navigate(['/home']);
       console.log(value);
+      this.test();
     })
     localStorage.removeItem('flag');
     this.formulario.reset();
+    this.router.navigate(['/home']);
   }
 
 

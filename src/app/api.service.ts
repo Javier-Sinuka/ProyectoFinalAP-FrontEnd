@@ -29,9 +29,11 @@ export class ApiService {
 
       const bearerToken = headers.get('Authorization')!;
       const token = bearerToken.replace('Bearer', '');
+      const token_AFK = bearerToken.replace('Bearer','');
 
       localStorage.setItem('token', token);
 
+      localStorage.setItem('token_afk', token_AFK);
       return body;
     }))
   }
@@ -48,8 +50,18 @@ export class ApiService {
     return !!token; //Lo mismo que arriba, pero simplificado je
   }
 
+  verifyLoggedAFK():boolean{
+    const token = localStorage.getItem('token_afk');
+    // return token ? true : false;
+    return !!token; //Lo mismo que arriba, pero simplificado je
+  }
+
   getToken(){
     return localStorage.getItem('token');
+  }
+
+  getTokenAFK(){
+    return localStorage.getItem('token_afk');
   }
 
   getContactos(){
@@ -64,14 +76,14 @@ export class ApiService {
   }
 
   setLaboral(laboral: Laboral){
-    return this.http.post<Laboral>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/crearLaboral', laboral);
-    // return this.http.post<Laboral>('http://localhost:8080/api/laboral/crearLaboral', laboral);
+    // return this.http.post<Laboral>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/crearLaboral', laboral);
+    return this.http.post<Laboral>('http://localhost:8080/api/laboral/crearLaboral', laboral);
 
   }
 
   deleteLaboral(id: number){
-    return this.http.delete('https://proyectofinalap-backend-production.up.railway.app/api/laboral/eliminarLaboral/' + id);
-    // return this.http.delete('http://localhost:8080/api/laboral/eliminarLaboral/' + id);
+    // return this.http.delete('https://proyectofinalap-backend-production.up.railway.app/api/laboral/eliminarLaboral/' + id);
+    return this.http.delete('http://localhost:8080/api/laboral/eliminarLaboral/' + id);
   }
 
   getLaboralPorId(id: number){
@@ -80,8 +92,8 @@ export class ApiService {
   }
 
   updateLaboral(laboral: Laboral){
-    return this.http.put('https://proyectofinalap-backend-production.up.railway.app/api/laboral/actualizarLaboral/', laboral);
-    // return this.http.put('http://localhost:8080/api/laboral/actualizarLaboral/', laboral);
+    // return this.http.put('https://proyectofinalap-backend-production.up.railway.app/api/laboral/actualizarLaboral/', laboral);
+    return this.http.put('http://localhost:8080/api/laboral/actualizarLaboral/', laboral);
   }
 
   envioCorreo(parametros: any){

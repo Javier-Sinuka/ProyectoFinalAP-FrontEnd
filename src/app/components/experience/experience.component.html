@@ -43,22 +43,8 @@
       </div>
     </div>
   </div>
-  {{test()}}
   <br>
   <br>
-
-  <div *ngFor="let laboral of labo" class="container-fluid experience-info">
-    <div class="content-expose">
-      <h3><strong>- {{laboral.nombreExperiencia}}</strong></h3>
-      <h5>Modalidad: {{laboral.modalidadExperiencia}}  ({{laboral.lugarExperiencia}})</h5>
-      <h5>Periodo: {{laboral.periodoExperiencia}} meses</h5>
-      <div class="back-cute">
-        <p>
-          {{laboral.contenidoExperiencia}}
-        </p>
-      </div>
-    </div>
-  </div>
 
   <div *ngFor="let laboral of laborales" class="container-fluid experience-info">
     <div class="content-expose">
@@ -73,6 +59,22 @@
       <div *ngIf="verifyLogged()" class="modificadores">
         <button type="button" class="btn btn-success editar-boton" (click)="editarExperienciaLaboral(laboral.id)">Editar</button>
         <button type="button" class="btn btn-danger eliminar-boton" (click)="eliminarExperienciaLaboral(laboral.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="verifyLoggedAFK()==false">
+    <div *ngFor="let laboral of laborales" class="container-fluid experience-info">
+      <div class="content-expose">
+        <h3><strong>- {{laboral.nombreExperiencia}}</strong></h3>
+        <h5>Modalidad: {{laboral.modalidadExperiencia}}  ({{laboral.lugarExperiencia}})</h5>
+        <h5>Periodo: {{laboral.periodoExperiencia}} meses</h5>
+        <div class="back-cute">
+          <p>
+            {{laboral.contenidoExperiencia}}
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -17,12 +17,18 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.apiService.getToken();
+    const token_AFK = this.apiService.getTokenAFK();
 
-    if(token){
+    if (token) {
       const cloned = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`)
       })
-      return  next.handle(cloned);
+      return next.handle(cloned);
+    } else if (token_AFK) {
+      const cloned = request.clone({
+        headers: request.headers.set('Authorization', `Bearer ${token_AFK}`)
+      })
+      return next.handle(cloned);
     }
     return next.handle(request);//seguir con el pipe
   }

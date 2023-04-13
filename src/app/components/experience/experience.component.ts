@@ -15,7 +15,7 @@ import {LaboralClass} from "../../models/LaboralClass";
 
 export class ExperienceComponent implements OnInit{
   contactos?: Contacto[];
-  laborales?: Laboral[];
+  laborales?: Laboral[] = [];
   laboral?: Laboral;
   formulario: FormGroup = this.fb.group({
     id:[],
@@ -25,15 +25,9 @@ export class ExperienceComponent implements OnInit{
     periodoExperiencia: [],
     contenidoExperiencia: [],
   })
-  laboralEnEdicion?: Laboral;
   idLaboral?:number;
   idParaPrueba?:number;
 
-  // labo?: Laboral[] = [{id:123,lugarExperiencia:'cordoba',contenidoExperiencia:'contenido exp',
-  // periodoExperiencia:'periodo asdf', nombreExperiencia:'nombreexpeee', modalidadExperiencia:'pres'}];
-  labo?: Laboral[];
-  lab?: Laboral;
-  valor?: Array<number>[];
 
   constructor( private apiService: ApiService,
                private router: Router,
@@ -52,34 +46,14 @@ export class ExperienceComponent implements OnInit{
     return this.apiService.verifyLogged();
   }
 
-  getLaboral(){
-    this.apiService.getLaboral().subscribe( laboral =>{
-      this.laborales = laboral;
-      // for (var i = 0; i < this.laborales.length; i++) {
-        // this.lab?.id = laboral[i].id;
-        // console.log("Contenido laboral");
-        // console.log(laboral[i]);
-        // this.labo = [{id:this.laborales[i].id,nombreExperiencia:this.laborales[i].nombreExperiencia,
-        //   modalidadExperiencia:this.laborales[i].modalidadExperiencia, periodoExperiencia:this.laborales[i].periodoExperiencia,
-        //   contenidoExperiencia:this.laborales[i].contenidoExperiencia, lugarExperiencia:this.laborales[i].lugarExperiencia}]
-        // this.labo?.push({id:this.laborales[i].id,nombreExperiencia:this.laborales[i].nombreExperiencia,
-        //   modalidadExperiencia:this.laborales[i].modalidadExperiencia, periodoExperiencia:this.laborales[i].periodoExperiencia,
-        //   contenidoExperiencia:this.laborales[i].contenidoExperiencia, lugarExperiencia:this.laborales[i].lugarExperiencia});
-      // }
-      console.log("Desde getLaboral: " + this.valor);
-    });
+  verifyLoggedAFK():boolean{
+    return this.apiService.verifyLoggedAFK();
   }
 
-  //Seguir desde aca
-
-  test(){
-    console.log("contenido labo: " + this.labo);
-
-    for(var i = 0; i < 10; i++){
-      this.valor?.push();
-    }
-
-    console.log("Desde getLaboral: " + this.valor);
+  getLaboral(){
+    this.apiService.getLaboral().subscribe( laboral =>{
+      this.laborales?.push(...laboral);
+    });
   }
 
   // CREACION DE EXPERIENCIA
@@ -113,6 +87,7 @@ export class ExperienceComponent implements OnInit{
     });
     localStorage.removeItem('flag');
     this.formulario.reset();
+    this.test();
   }
 
   modificarExperiencia(){
@@ -127,8 +102,12 @@ export class ExperienceComponent implements OnInit{
     })
     localStorage.removeItem('flag');
     this.formulario.reset();
+    this.test();
   }
 
+  test(){
+    window.location.reload();
+  }
 
   eliminarExperienciaLaboral(id: number){
     if(confirm("¿Realmente quiere elminar la Experiencia Laboral?")){

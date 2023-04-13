@@ -20,8 +20,8 @@ export class ApiService {
   }
 
   login(creds: Credentials){
-    return this.http.post('https://proyectofinalap-backend-production.up.railway.app/login', creds, {
-    // return this.http.post('http://localhost:8080/login', creds, {
+    // return this.http.post('https://proyectofinalap-backend-production.up.railway.app/login', creds, {
+    return this.http.post('http://localhost:8080/login', creds, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) =>{
       const body = response.body;
@@ -58,8 +58,8 @@ export class ApiService {
   }
 
   getLaboral(){
-    return this.http.get<Laboral[]>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/listaLaboral')
-    // return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral')
+    // return this.http.get<Laboral[]>('https://proyectofinalap-backend-production.up.railway.app/api/laboral/listaLaboral')
+    return this.http.get<Laboral[]>('http://localhost:8080/api/laboral/listaLaboral')
 
   }
 

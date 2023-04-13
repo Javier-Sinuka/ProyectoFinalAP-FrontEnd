@@ -29,6 +29,11 @@ export class ExperienceComponent implements OnInit{
   idLaboral?:number;
   idParaPrueba?:number;
 
+  // labo?: Laboral[] = [{id:123,lugarExperiencia:'cordoba',contenidoExperiencia:'contenido exp',
+  // periodoExperiencia:'periodo asdf', nombreExperiencia:'nombreexpeee', modalidadExperiencia:'pres'}];
+  labo?: Laboral[];
+  lab?: Laboral;
+  valor?: Array<number>[];
 
   constructor( private apiService: ApiService,
                private router: Router,
@@ -41,8 +46,8 @@ export class ExperienceComponent implements OnInit{
       console.log(contactos);
     });
     this.getLaboral();
-
   }
+
   verifyLogged():boolean{
     return this.apiService.verifyLogged();
   }
@@ -50,7 +55,31 @@ export class ExperienceComponent implements OnInit{
   getLaboral(){
     this.apiService.getLaboral().subscribe( laboral =>{
       this.laborales = laboral;
+      // for (var i = 0; i < this.laborales.length; i++) {
+        // this.lab?.id = laboral[i].id;
+        // console.log("Contenido laboral");
+        // console.log(laboral[i]);
+        // this.labo = [{id:this.laborales[i].id,nombreExperiencia:this.laborales[i].nombreExperiencia,
+        //   modalidadExperiencia:this.laborales[i].modalidadExperiencia, periodoExperiencia:this.laborales[i].periodoExperiencia,
+        //   contenidoExperiencia:this.laborales[i].contenidoExperiencia, lugarExperiencia:this.laborales[i].lugarExperiencia}]
+        // this.labo?.push({id:this.laborales[i].id,nombreExperiencia:this.laborales[i].nombreExperiencia,
+        //   modalidadExperiencia:this.laborales[i].modalidadExperiencia, periodoExperiencia:this.laborales[i].periodoExperiencia,
+        //   contenidoExperiencia:this.laborales[i].contenidoExperiencia, lugarExperiencia:this.laborales[i].lugarExperiencia});
+      // }
+      console.log("Desde getLaboral: " + this.valor);
     });
+  }
+
+  //Seguir desde aca
+
+  test(){
+    console.log("contenido labo: " + this.labo);
+
+    for(var i = 0; i < 10; i++){
+      this.valor?.push();
+    }
+
+    console.log("Desde getLaboral: " + this.valor);
   }
 
   // CREACION DE EXPERIENCIA
@@ -77,6 +106,7 @@ export class ExperienceComponent implements OnInit{
     const value = this.formulario.value;
     this.apiService.setLaboral(value).subscribe(data =>{
       this.getLaboral();
+
       alert("Se agrego con exito la Nueva Experiencia Laboral!");
       localStorage.removeItem('flag');
       this.router.navigate(['/home']);

@@ -30,5 +30,3 @@ export interface Value{
   periodoExperiencia: string;
   contenidoExperiencia: string;
 }
-
-
